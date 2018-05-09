@@ -3,15 +3,13 @@
  */
 package bridge;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public interface PaymentGateway {
 
-	void acceptPayment(PreferredGateway gateway);
-	
-	void setAvailability(boolean available);
-	
-	boolean getAvailability();
+  void acceptPayment(PreferredGateway gateway);
+  boolean getAvailability();
+  void setAvailability(boolean available);
 }

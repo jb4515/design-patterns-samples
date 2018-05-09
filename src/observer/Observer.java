@@ -3,12 +3,12 @@
  */
 package observer;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public interface Observer {
-	
-	void update();
+
+  void update();
 
 }

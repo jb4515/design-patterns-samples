@@ -3,17 +3,17 @@
  */
 package strategy;
 
+
 /**
  * @author jitesh-kumar
- *
  */
-public class SwordWeapon implements FightingWeapon{
+public class SwordWeapon implements FightingWeapon {
 
-	
-	@Override
-	public void fightOpponent() {
-	System.out.println(" ### Fighting sword fight right now. ### ");
-		
-	}
+
+  @Override
+  public void fightOpponent() {
+    System.out.println(" ### Fighting sword fight right now. ### ");
+
+  }
 
 }

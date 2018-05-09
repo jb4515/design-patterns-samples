@@ -3,22 +3,22 @@
  */
 package observer;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public class ObserverPatternClient {
 
-	public static void main(String[] args) {
-		System.out.println("***** Demo for Observer pattern *****");
-		System.out.println();
+  public static void main(String[] args) {
+    System.out.println("***** Demo for Observer pattern *****");
+    System.out.println();
 
-		SelectedSmartphone selectedSmartphone = new SelectedSmartphone();
+    SelectedSmartphone selectedSmartphone = new SelectedSmartphone();
 
-		Customer customer = new Customer(selectedSmartphone);
+    Customer customer = new Customer(selectedSmartphone);
 
-		selectedSmartphone.setInStock(true);
+    selectedSmartphone.setInStock(true);
 
-	}
+  }
 
 }

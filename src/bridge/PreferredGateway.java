@@ -3,11 +3,11 @@
  */
 package bridge;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public enum PreferredGateway {
 
-	NETBANKING, CARD_PAYMENT;
+  NETBANKING, CARD_PAYMENT;
 }

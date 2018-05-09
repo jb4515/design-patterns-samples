@@ -3,26 +3,26 @@
  */
 package chainOfResponsibility;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public class DispenseToy implements ToyFactoryChain {
 
-	private ToyFactoryChain toyFactoryChain;
+  private ToyFactoryChain toyFactoryChain;
 
-	@Override
-	public void processToy() {
-		System.out.println();
-		System.out.println(" **** Dispensing toy for market.  ****");
+  @Override
+  public void processToy() {
+    System.out.println();
+    System.out.println(" **** Dispensing toy for market.  ****");
 
-		//USE IT AFTER ADDING FURTHER PROCESSORS
-		//		this.toyFactoryChain.processToy();
-	}
+    //USE IT AFTER ADDING FURTHER PROCESSORS
+    //		this.toyFactoryChain.processToy();
+  }
 
-	@Override
-	public void setNextChain(ToyFactoryChain toyFactoryChain) {
-		this.toyFactoryChain = toyFactoryChain;
-	}
+  @Override
+  public void setNextChain(ToyFactoryChain toyFactoryChain) {
+    this.toyFactoryChain = toyFactoryChain;
+  }
 
 }

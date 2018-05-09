@@ -2,16 +2,17 @@
  * 21-Jun-2017
  */
 package facade;
+
+
 /**
  * @author jitesh-kumar
- *
  */
 public interface HomeAutomation {
 
-	void prepareKitchenForCooking();
+  void prepareKitchenForCooking();
 
-	void prepareBedroomForMovie();
+  void prepareBedroomForMovie();
 
-	void makeAdjustmentsForSleep();
+  void makeAdjustmentsForSleep();
 
 }

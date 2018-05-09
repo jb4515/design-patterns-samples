@@ -3,13 +3,13 @@
  */
 package chainOfResponsibility;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public interface ToyFactoryChain {
 
-	void processToy();
+  void processToy();
 
-	void setNextChain(ToyFactoryChain toyFactoryChain);
+  void setNextChain(ToyFactoryChain toyFactoryChain);
 }

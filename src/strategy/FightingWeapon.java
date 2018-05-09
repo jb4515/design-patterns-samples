@@ -3,12 +3,12 @@
  */
 package strategy;
 
+
 /**
  * @author jitesh-kumar
- *
  */
 public interface FightingWeapon {
 
-	void fightOpponent();
-	
+  void fightOpponent();
+
 }
