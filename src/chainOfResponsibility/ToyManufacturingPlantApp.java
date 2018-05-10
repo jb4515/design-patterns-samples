@@ -16,6 +16,7 @@ public class ToyManufacturingPlantApp {
     MakeToy makeToyProcessor = new MakeToy();
     DispenseToy dispenseToyProcessor = new DispenseToy();
 
+    //could create in other ways as well, like having a list or workflow
     toyFactoryStarter.setNextChain(makeToyProcessor);
     makeToyProcessor.setNextChain(dispenseToyProcessor);
 
