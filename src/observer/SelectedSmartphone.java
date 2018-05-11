@@ -36,9 +36,7 @@ public class SelectedSmartphone implements Observable {
   @Override
   public void notifyObservers() {
     // notify all interested buyers that item is in stock
-    for (Observer observer : interestedCustomers) {
-      observer.update();
-    }
+    interestedCustomers.parallelStream().forEach(observer -> observer.update());
 
   }
 
