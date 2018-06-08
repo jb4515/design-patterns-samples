@@ -1,4 +1,4 @@
-package problems.job.custom.workflow;
+package problems.job.custom.workflow.util;
 
 
 import static java.lang.Integer.parseInt;

@@ -1,17 +1,19 @@
 package problems.job.custom.workflow.data;
 
 
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
+import static problems.job.custom.workflow.common.Constants.JOB;
 import static problems.job.custom.workflow.common.Constants.SPACE_DELIMITER;
+import static problems.job.custom.workflow.util.JobCandidateStatusUtil.sortByTransitionOrder;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import problems.job.custom.workflow.JobCandidateStatusUtil;
-import problems.job.custom.workflow.exception.JobAlreadyExistsException;
-import problems.job.custom.workflow.exception.NoSuchJobException;
+import problems.job.custom.workflow.exception.NoSuchRecordException;
+import problems.job.custom.workflow.exception.RecordAlreadyExistsException;
+import problems.job.custom.workflow.model.Job;
 import problems.job.custom.workflow.model.JobCandidateStatus;
 
 
@@ -22,26 +24,33 @@ public class JobDAO {
 
   private Pattern spaceSeparatedRegexPattern = Pattern.compile(SPACE_DELIMITER);
 
-  private Map<Integer, List<JobCandidateStatus>> validCandidateStatusesForJobs = new HashMap<>();
+  private Map<Integer, Job> validJobs = new HashMap<>();
   private Map<Integer, JobCandidateStatus> currentCandidateStatusForJobs;
 
-  public void add(Integer jobId, String statusesSeparatedBySpace) {
-    if (validCandidateStatusesForJobs.containsKey(jobId)) {
-      throw new JobAlreadyExistsException(jobId);
+  public void add(Job job, String statusesSeparatedBySpace) {
+    Integer jobId = job.getId();
+    if (isExistingJob(jobId)) {
+      throw new RecordAlreadyExistsException(JOB, jobId);
     }
-    addJobCandidateStatusesForJob(jobId, statusesSeparatedBySpace);
+    addJobCandidateStatusesForJob(jobId, job, statusesSeparatedBySpace);
+    System.out.println(format("Successfully added job with id %s", job.getId()));
   }
 
-  private void addJobCandidateStatusesForJob(final Integer jobId, final String statusesSeparatedBySpace) {
+  public boolean isExistingJob(Integer jobId) {
+    return validJobs.containsKey(jobId);
+  }
+
+  private void addJobCandidateStatusesForJob(final Integer jobId, final Job job, final String statusesSeparatedBySpace) {
     //TODO use regex pattern matcher instead of split
-    validCandidateStatusesForJobs.put(jobId, JobCandidateStatusUtil
-                                               .sortByTransitionOrder(asList(statusesSeparatedBySpace.split(SPACE_DELIMITER))));
+    job.setJobCandidateStatuses(sortByTransitionOrder(asList(statusesSeparatedBySpace.split(SPACE_DELIMITER))));
+    validJobs.put(jobId, job);
   }
 
-  public void removeJobFromValidJobs(Integer jobId) {
-    if (!validCandidateStatusesForJobs.containsKey(jobId)) {
-      throw new NoSuchJobException(jobId);
+  public void remove(Integer jobId) {
+    if (!isExistingJob(jobId)) {
+      throw new NoSuchRecordException(JOB, jobId);
     }
-    validCandidateStatusesForJobs.remove(jobId);
+    validJobs.remove(jobId);
+    System.out.println(format("Successfully removed job with id %s .", jobId));
   }
 }

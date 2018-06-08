@@ -7,4 +7,6 @@ package problems.job.custom.workflow.common;
 public class Constants {
 
   public static final String SPACE_DELIMITER = " ";
+  public static final String JOB = "Job";
+  public static final String CANDIDATE = "Candidate";
 }

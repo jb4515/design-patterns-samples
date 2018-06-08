@@ -1,7 +1,10 @@
 package problems.job.custom.workflow.service;
 
 
+import static java.lang.String.format;
+
 import problems.job.custom.workflow.data.JobDAO;
+import problems.job.custom.workflow.model.Job;
 
 
 /**
@@ -11,14 +14,14 @@ public class JobService {
 
   private JobDAO jobDAO = new JobDAO();
 
-  public void add(Integer jobId, String transitionOrders) {
-    jobDAO.add(jobId, transitionOrders);
-    System.out.println(String.format("Successfully added job with id {} and transition orders as {}", jobId, transitionOrders));
+  public void add(Job job, String transitionOrders) {
+    jobDAO.add(job, transitionOrders);
+    System.out.println(format("Successfully added job with id %s and transition orders as %s", job.getId(), transitionOrders));
   }
 
   public void remove(Integer jobId) {
-    jobDAO.removeJobFromValidJobs(jobId);
-    System.out.println(String.format("Successfully removed job with id {} .", jobId));
+    jobDAO.remove(jobId);
+    System.out.println(format("Successfully removed job with id %s .", jobId));
   }
 
 }
